@@ -1,48 +1,120 @@
-# Strategy
+<p align="center">
+  <img src=".github/readme/cover.svg" width="1200" alt="Strategy group — define the business, give work a path. Four specialists for your own coding agent.">
+</p>
 
-**A business needs a definition, AI or not. Definitions give clarity and set the path. This group of four specialist workers helps you build yours with your own AI, by asking the right things in the right AI space.**
+<h1 align="center">A business definition you can act from.</h1>
 
-Ask AI for a strategy and it returns a first plausible answer, settling choices you may not have known needed deciding. Understanding what works and what doesn't takes time, and it starts from a clear account of what you are building: what the business is, whom it serves, why they choose it, how it earns and what it does next.
+<p align="center">
+  Four specialist workers develop your venture's connected strategy.<br>
+  You bring the purpose and material. Your own AI does the specialist work. You settle the decisions.
+</p>
 
-These workers put those professional questions and their relationships in front of your AI. They ask for what they are missing, develop connected choices and bring them to you. You decide, and when a decision changes, the documents built on it are flagged.
+<p align="center">
+  <strong>Free under MIT</strong> &nbsp;·&nbsp; 4 specialists &nbsp;·&nbsp; Markdown in your repository &nbsp;·&nbsp; Your own coding agent
+</p>
 
-Free under the MIT licence. The whole group, with nothing held back.
+<p align="center">
+  <a href="#start">Start here</a> &nbsp; / &nbsp;
+  <a href="#four-specialists-one-connected-definition">Meet the workers</a> &nbsp; / &nbsp;
+  <a href="#your-decisions-stay-with-you">How it works</a> &nbsp; / &nbsp;
+  <a href="https://www.leanos.tech/">LeanOS</a>
+</p>
 
-## The workers
+---
 
-| Worker | Develops |
-| --- | --- |
-| `venture-strategist` | The venture definition, objectives, bets and focus, and the strategy review |
-| `market-strategist` | Segments, target segments and opportunities |
-| `positioning-strategist` | Differentiation, the frame and the category |
-| `business-model-designer` | The revenue model, offers and prices |
+## The questions a business needs to answer
 
-[AGENTS.md](AGENTS.md) is the group's entry point: its state, members, must-agree rules and routing. Each worker's skills are in its own folder, at `{worker}/.claude/skills/{skill}/SKILL.md`, and its `AGENTS.md` routes a request to them. Contracts and checks are in `.group/`.
+What are you building? Whom does it serve? Why would they choose it? What do you offer, how does it earn, and what advances next?
+
+The Strategy group puts those professional questions and their relationships in front of your AI. Its workers develop connected choices, ask for what is missing and bring the decisions to you. When a decision changes, the documents built on it are checked for agreement.
+
+## Four specialists, one connected definition
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>01 · Venture strategist</h3>
+      <p>The venture definition, objectives, bets, focus plan and strategy review. A clear account of the business and what advances next.</p>
+      <a href="venture-strategist/PROFILE.md">Meet the specialist →</a>
+    </td>
+    <td width="50%" valign="top">
+      <h3>02 · Market strategist</h3>
+      <p>Segments, target segments and opportunities. Whom to serve, in which buying situations, and where the opportunity lies.</p>
+      <a href="market-strategist/PROFILE.md">Meet the specialist →</a>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>03 · Positioning strategist</h3>
+      <p>Differentiation, positioning and category. Why customers would choose the venture and the frame that makes its value clear.</p>
+      <a href="positioning-strategist/PROFILE.md">Meet the specialist →</a>
+    </td>
+    <td width="50%" valign="top">
+      <h3>04 · Business model designer</h3>
+      <p>The revenue model, offer catalogue and price book. What the business exchanges, what customers can buy and how prices fit.</p>
+      <a href="business-model-designer/PROFILE.md">Meet the specialist →</a>
+    </td>
+  </tr>
+</table>
 
 ## Start
 
-You need an AI agent and Python 3.11 or later. Add the group to your venture's repository at `workers/strategy`, where its commands expect it:
+You need a coding agent and Python 3.11 or later. From your venture repository, clone the group into the path its commands expect:
 
-```
+```sh
 git clone https://github.com/LeanOS-Technologies/strategy.git workers/strategy
 ```
 
-Then, from your repository root, ask your agent:
+Open your agent at your venture repository root and ask:
 
 > Read workers/strategy/AGENTS.md. Establish the initial direction for my venture "my-venture". Here is what I know: ...
 
-Bring your purpose, customers and offer, however rough. The workers ask for the rest.
+Bring your purpose, customers and offer, however rough. The workers ask for the rest. You can also begin with one focused request, such as defining the venture or revising an offer.
 
-Their documents are written as candidates under `venture/my-venture/strategy/candidate/`. Nothing becomes current until you accept it. You can also start smaller: ask one worker for one document, such as your venture definition.
+> [!TIP]
+> **Delete this README after cloning.** It is the GitHub marketing page, not part of the Strategy model. You can also delete `.github/readme/`, which contains only this page's artwork. Your agent starts at [AGENTS.md](AGENTS.md). Keep [LICENSE](LICENSE).
 
-To check the documents:
+## Your decisions stay with you
 
-```
+| Step | What happens |
+| --- | --- |
+| **01 · Bring the brief** | Supply your direction, current material and the question you need answered. |
+| **02 · Develop the work** | The relevant specialists develop their documents and expose missing inputs and decisions. |
+| **03 · Check the connections** | Programs check structure, references and arithmetic; specialists check the meaning across affected documents. |
+| **04 · Accept the change** | You read the candidate set and decide. Only accepted changes become current. |
+
+Documents are Markdown files in your repository. Initial candidates live under `venture/my-venture/strategy/candidate/`. Related work can use the accepted decisions in later sessions.
+
+<details>
+<summary><strong>Check the documents</strong></summary>
+
+From your venture repository root:
+
+```sh
 python3 workers/strategy/.group/tools/check.py venture/my-venture/strategy
 ```
 
-## Licence
+The checker establishes its declared structural, reference, quantity and attribution properties. It does not replace specialist judgment or your acceptance.
 
-MIT. Use it, study it, change it and share it. Your strategy documents are yours. See [LICENSE](LICENSE).
+</details>
 
-Built by [LeanOS](https://www.leanos.tech), which builds systems operating with AI.
+<details>
+<summary><strong>Look inside the group</strong></summary>
+
+- [AGENTS.md](AGENTS.md) — the group entry point, members and routing.
+- [.group/contracts/](.group/contracts/) — the document contracts and their relationships.
+- [.group/tools/](.group/tools/) — shared checks and views.
+- Each worker's `AGENTS.md`, `PROFILE.md`, knowledge and `.claude/skills/` — its specialist methods.
+
+The group prepares strategy and recommendations. Your business direction, acceptance and external commitments remain yours.
+
+</details>
+
+---
+
+<p align="center">
+  <strong>The whole group. Free under MIT.</strong><br>
+  Use it, study it, change it and share it. Your strategy documents are yours.<br>
+  <a href="LICENSE">Read the licence</a>.<br><br>
+  Built by <a href="https://www.leanos.tech/">LeanOS</a> · Operating with AI
+</p>

@@ -1,5 +1,8 @@
 <p align="center">
-  <img src=".github/readme/cover.svg" width="1200" alt="Strategy group — define the business, give work a path. Four specialists for your own coding agent.">
+  <picture>
+    <source media="(max-width: 640px)" srcset=".github/readme/cover-mobile.svg">
+    <img src=".github/readme/cover.svg" width="960" alt="Strategy group — define the business.">
+  </picture>
 </p>
 
 <h1 align="center">A business definition you can act from.</h1>
@@ -10,14 +13,9 @@
 </p>
 
 <p align="center">
-  <strong>Free under MIT</strong> &nbsp;·&nbsp; 4 specialists &nbsp;·&nbsp; Markdown in your repository &nbsp;·&nbsp; Your own coding agent
-</p>
-
-<p align="center">
   <a href="#start">Start here</a> &nbsp; / &nbsp;
   <a href="#four-specialists-one-connected-definition">Meet the workers</a> &nbsp; / &nbsp;
-  <a href="#your-decisions-stay-with-you">How it works</a> &nbsp; / &nbsp;
-  <a href="https://www.leanos.tech/">LeanOS</a>
+  <a href="#your-decisions-stay-with-you">How it works</a>
 </p>
 
 ---
@@ -30,32 +28,12 @@ The Strategy group puts those professional questions and their relationships in 
 
 ## Four specialists, one connected definition
 
-<table>
-  <tr>
-    <td width="50%" valign="top">
-      <h3>01 · Venture strategist</h3>
-      <p>The venture definition, objectives, bets, focus plan and strategy review. A clear account of the business and what advances next.</p>
-      <a href="venture-strategist/PROFILE.md">Meet the specialist →</a>
-    </td>
-    <td width="50%" valign="top">
-      <h3>02 · Market strategist</h3>
-      <p>Segments, target segments and opportunities. Whom to serve, in which buying situations, and where the opportunity lies.</p>
-      <a href="market-strategist/PROFILE.md">Meet the specialist →</a>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <h3>03 · Positioning strategist</h3>
-      <p>Differentiation, positioning and category. Why customers would choose the venture and the frame that makes its value clear.</p>
-      <a href="positioning-strategist/PROFILE.md">Meet the specialist →</a>
-    </td>
-    <td width="50%" valign="top">
-      <h3>04 · Business model designer</h3>
-      <p>The revenue model, offer catalogue and price book. What the business exchanges, what customers can buy and how prices fit.</p>
-      <a href="business-model-designer/PROFILE.md">Meet the specialist →</a>
-    </td>
-  </tr>
-</table>
+| Specialist | The work it develops |
+| --- | --- |
+| [Venture strategist](venture-strategist/PROFILE.md) | Venture definition, objectives, bets, focus plan and strategy review. |
+| [Market strategist](market-strategist/PROFILE.md) | Segments, target segments and opportunities. |
+| [Positioning strategist](positioning-strategist/PROFILE.md) | Differentiation, positioning and category. |
+| [Business model designer](business-model-designer/PROFILE.md) | Revenue model, offer catalogue and price book. |
 
 ## Start
 

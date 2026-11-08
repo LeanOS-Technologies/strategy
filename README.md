@@ -49,6 +49,25 @@ Open your agent at your venture repository root and ask:
 
 Bring your purpose, customers and offer, however rough. The workers ask for the rest. You can also begin with one focused request, such as defining the venture or revising an offer.
 
+<details>
+<summary><strong>More prompt examples</strong></summary>
+
+Adapt the business details and attach the material each prompt refers to.
+
+**Choose a customer focus**
+
+> For my scheduling-software venture, compare independent clinics and multi-site practices as initial customers. Use the attached interviews, product notes and operating constraints to develop a target recommendation and explain the trade-offs.
+
+**Develop positioning**
+
+> Our buyers compare us with spreadsheets and general booking tools. Using our product notes and customer conversations, develop a positioning proposal. Distinguish capabilities we have from those we are still planning.
+
+**Develop offers and pricing**
+
+> We have accepted target customers and positioning. Use those decisions and the attached cost and delivery constraints to propose our offers and pricing. Show your assumptions and the decisions I need to settle.
+
+</details>
+
 > [!TIP]
 > **Delete this README after cloning.** It is the GitHub marketing page, not part of the Strategy model. You can also delete `.github/readme/`, which contains only this page's artwork. Your agent starts at [AGENTS.md](AGENTS.md). Keep [LICENSE](LICENSE).
 

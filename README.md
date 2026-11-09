@@ -1,10 +1,3 @@
-<p align="center">
-  <picture>
-    <source media="(max-width: 640px)" srcset=".github/readme/cover-mobile.svg">
-    <img src=".github/readme/cover.svg" width="960" alt="Strategy group — define the business.">
-  </picture>
-</p>
-
 <h1 align="center">A business definition you can act from.</h1>
 
 <p align="center">
@@ -69,7 +62,7 @@ Adapt the business details and attach the material each prompt refers to.
 </details>
 
 > [!TIP]
-> **Delete this README after cloning.** It is the GitHub marketing page, not part of the Strategy model. You can also delete `.github/readme/`, which contains only this page's artwork. Your agent starts at [AGENTS.md](AGENTS.md). Keep [LICENSE](LICENSE).
+> **Delete this README after cloning.** It is the GitHub marketing page, not part of the Strategy model. Your agent starts at [AGENTS.md](AGENTS.md). Keep [LICENSE](LICENSE).
 
 ## Your decisions stay with you
 

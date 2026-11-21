@@ -108,3 +108,19 @@ The group prepares strategy and recommendations. Your business direction, accept
   <a href="LICENSE">Read the licence</a>.<br><br>
   Built by <a href="https://www.leanos.tech/">LeanOS</a> · Operating with AI
 </p>
+
+## Readable HTML results
+
+Final delivery includes a self-contained HTML reader with product-specific ways to explore the result, inspect its grounds and follow relationships. It includes its data, styles, scripts and required fonts, and opens locally without a server or internet connection. Existing native outputs remain available.
+
+From the installed product root, after final checks:
+
+```sh
+python3 .group/tools/result_html.py STATE_DIRECTORY --open
+```
+
+Use the saved result folder for `RESULT` or the current native document directory for `STATE_DIRECTORY`. Intermediate exports omit `--open`; final delivery opens once. If a browser is unavailable, the command keeps the complete HTML and reports its path. The reader does not accept a decision, upgrade evidence or publish anything. Bundled reader assets and font licences are included with the product.
+
+## Tool guide
+
+The tool guide explains the product’s mechanics using the same design language as its result reader. From the installed product root, run `python3 .group/tools/view.py`; the generated guide is `.group/view/index.html`. Generating the guide reads saved definitions and does not run venture work.

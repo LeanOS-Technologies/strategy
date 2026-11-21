@@ -29,7 +29,7 @@ Continuing current work is always one of the alternatives.
 
 Bets reinforce when one produces an input another needs (a trial produces the case evidence an outreach bet uses), and compete when they draw on the same customers' attention, the same product changes or the same owner decisions. Select a set whose combined demands on those shared inputs are feasible, and name the strongest forgone bet with the condition that would bring it back.
 
-Control conditions are set before results: what observation, by which horizon, earns continuation, more emphasis, a change or a stop. A threshold set where the bet already passes is not a control.
+Control conditions are set before results: what observation, by which horizon, earns continuation, more emphasis, a change, a hold or closing. A threshold set where the bet already passes is not a control.
 
 ## 4. Dependency versus preference
 

@@ -22,18 +22,9 @@ import strategy_docs as sd  # noqa: E402
 GROUP_ROOT = sd.GROUP_DIR.parent
 VIEW = sd.GROUP_DIR / "view" / "index.html"
 
-CSS = """
-:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#5d5b55;--line:#dedad0;--accent:#2f5d50;--chip:#eef2ee}
-@media (prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ecebe6;--muted:#a7a49b;--line:#34332f;--accent:#8cc3b0;--chip:#1f2a26}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 system-ui,-apple-system,Segoe UI,sans-serif}
-main{max-width:1080px;margin:0 auto;padding:32px 16px 64px}h1{font-size:28px;margin:0 0 4px}h2{font-size:19px;margin:36px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
-h3{font-size:16px;margin:20px 0 6px}p{margin:6px 0}.muted{color:var(--muted)}
-table{border-collapse:collapse;width:100%;margin:8px 0 14px;font-size:14px}th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}th{background:var(--chip)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}.card{border:1px solid var(--line);border-radius:8px;padding:12px 14px}
-.chip{display:inline-block;background:var(--chip);border-radius:4px;padding:1px 6px;margin:2px 4px 2px 0;font-size:13px}code{font-size:13px}
-details{border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin:8px 0}summary{cursor:pointer;font-weight:600}
-.wrap{overflow-x:auto}
-"""
+import reader_support
+
+CSS = reader_support.styles()  # Compatible access to the shared visual primitives.
 
 
 def esc(s: str) -> str:
@@ -83,7 +74,7 @@ def build() -> str:
     identity = section_tables(agents, "Identity")[0]
     state = next(r[1] for r in identity.rows if sd.strip_md(r[0]) == "State")
     members = section_tables(agents, "Members")[0]
-    parts = [f"<h1>Strategy</h1><p class='muted'>{esc(state)}</p>"]
+    parts = []
     parts.append("<p class='muted'>Generated from AGENTS.md, .group/contracts and the members' skills. Never edited.</p>")
 
     parts.append("<h2>Members and skills</h2><div class='grid'>")
@@ -92,7 +83,9 @@ def build() -> str:
         skills_dir = GROUP_ROOT / member / ".claude" / "skills"
         skills = sorted(skills_dir.glob("*/SKILL.md")) if skills_dir.is_dir() else []
         items = "".join(f"<p><span class='chip'>{esc(n)}</span> {esc(d)}</p>" for n, d in map(skill_info, skills))
-        parts.append(f"<div class='card'><h3>{esc(member)}</h3><p class='muted'>{esc(row[2])}</p>{items}</div>")
+        types=re.findall(r'\[([^\]]+)\]\(\.group/contracts/[^)]+\)',row[2])
+        outputs=reader_support.output_files([sd.TYPE_PATHS[t.strip('`')] for t in types])
+        parts.append(f"<div class='card'><h3>{esc(member)}</h3>{outputs}{items}</div>")
     parts.append("</div>")
 
     parts.append("<h2>Must-agree rules</h2>")
@@ -117,10 +110,8 @@ def build() -> str:
     parts.append("<h2>Boundary</h2>")
     parts.extend(table_html(t) for t in section_tables(agents, "Boundary"))
     body = "\n".join(parts)
-    return (
-        "<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>"
-        f"<title>Strategy group</title><style>{CSS}</style></head><body><main>\n{body}\n</main></body></html>\n"
-    )
+    return reader_support.tool_shell("Strategy", "Strategy group", state, body)
+
 
 
 def main(argv: list[str]) -> int:

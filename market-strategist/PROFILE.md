@@ -91,6 +91,9 @@ Every operation returns Candidate, NeedData, Conflict or Failure, each a defined
 | [`../.group/contracts/opportunities.md`](../.group/contracts/opportunities.md) | Contract of `opportunities` | `.claude/skills/prioritize-opportunities/SKILL.md` |
 | [`../.group/tools/check.py`](../.group/tools/check.py) | Document and must-agree check | All three skills |
 | [`../.group/tools/strategy_docs.py`](../.group/tools/strategy_docs.py) | Document parser used by `tools/market.py qualify` | `.claude/skills/choose-targets/SKILL.md` |
+| [../.group/result-reader.md](../.group/result-reader.md) | Final derived human result contract | All delivery paths |
+| [../.group/tools/](../.group/tools/) | Product-local reader code, templates, assets and licences; package this complete bundle | Final delivery |
+
 
 Export bundles every path listed here.
 

@@ -42,7 +42,7 @@ Notation: `D` = the owned document paths and their candidates (`venture/{v}/stra
 
 ### I3 Bet mechanism and objective relevance
 
-**Property.** Every bet in `B` references a current objective and states condition → intervention → hypothesised response → objective contribution, its hardest assumption, a relevant alternative and continue/change/stop conditions with their own basis. A response estimate carries an estimate label and basis; learning is valued once, as the decision it can change.
+**Property.** Every bet in `B` references a current objective and states condition → intervention → hypothesised response → objective contribution, its hardest assumption, a relevant alternative and continue, increase, change, hold and close conditions with their own basis. A response estimate carries an estimate label and basis; learning is valued once, as the decision it can change.
 
 **Violation signature.** A bet whose objective reference does not resolve; a mechanism that restates the intended outcome; thresholds set exactly where the bet passes; expected value from invented probabilities; an exploration bet that names no later decision.
 

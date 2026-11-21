@@ -62,3 +62,17 @@ Every request is a member's work: before it, open that member's `PROFILE.md`; th
 | Money management: budget, cash, forecasts, financial records | Finance | Strategy reads `unit-economics` and `financial-report` when they bear on a decision; Finance reads `focus-plan` purchase needs, offers and prices, and decides spending on its own terms |
 | Product capability, requirements, roadmap | Product | Strategy reads `requirements`, `roadmap`, `documentation`; Product reads targets, opportunities, bets, focus and offers |
 | Messages, identity, distribution, customer delivery | Meaning, Identity, Engagement, Customers | They read the venture-definition, positioning, targets, offers and prices; Strategy never writes their documents |
+
+## Human-readable result delivery
+
+After the affected native documents and combined checks are final, generate the product-owned reader with `python3 {product-root}/.group/tools/result_html.py {state-directory} --open`. Resolve `{product-root}` to this installed group's root and `{state-directory}` to the current strategy state; the command does not run another worker or alter the native Markdown. It writes `result.html` inside that state and opens once at final delivery. Intermediate exports omit `--open`. Return that HTML path alongside the existing native deliverables. A failed browser opening retains the complete HTML and reports its path; do not claim it opened.
+
+The reader is a derived, offline view governed by [the result-reader contract](.group/result-reader.md). Its source includes the renderer, `reader_support.py`, `result_reader.js`, `reader.css` and `reader-assets/` under `.group/tools/`; package them together. No website, other product, service or network dependency is needed after installation. Generation does not accept decisions or upgrade evidence status.
+
+For a final delivery that combines current documents and proposed revisions, pass `--candidate` explicitly to overlay matching files from `STATE_DIRECTORY/candidate/`. The HTML records those exact candidate source paths and statuses; generation grants no acceptance. Without this flag the current source set is exported. Point `STATE_DIRECTORY` directly at a standalone final/candidate document directory when that is the complete delivered result. Never substitute older current documents for the version actually delivered.
+
+## Two HTML views
+
+The installed product has two view types using the same bundled fonts, tokens, surfaces and controls. `python3 .group/tools/view.py` generates the tool guide from definitions; `--check` verifies that guide is current. `.group/tools/result_html.py STATE_DIRECTORY` generates the produced-result reader. Final result delivery still opens once after checks.
+
+Package the complete `.group/tools/` bundle, including `tool.css`, `tool.js`, `reader_support.py` and `reader-assets/`. The derived-reader contract is `.group/result-reader.md`; native domain contracts remain under `.group/contracts/`.

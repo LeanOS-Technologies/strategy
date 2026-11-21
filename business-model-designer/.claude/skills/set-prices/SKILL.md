@@ -115,3 +115,9 @@ The price proposal lets the owner assess a concrete offer. Research the relevant
 | No cost data | Keep contribution `unknown`; scope the entitlement so cost is bounded; name the measurement for Finance |
 | Unit question open in the revenue model | Price per the most likely unit, name the alternative in one line, and return the question to design-revenue-model |
 | Requested concession exceeds the bound | Prepare the concession with its effect and route it to the authority that set the bound |
+
+## Final readable delivery
+
+After this change's native documents and checks are final, follow the group's Human-readable result delivery: run `python3 {product-root}/.group/tools/result_html.py {state-directory} --open` once for the combined result and return `result.html` with the native files. The product root is this installed strategy group; the state directory is the current documents, with no automatic candidate overlay. Intermediate exports omit `--open`. Keep the complete file and report the exact path if the host cannot open it. This derived view changes no native record, decision, status or delivery contract.
+
+For a final delivery that combines current documents and proposed revisions, pass `--candidate` explicitly to overlay matching files from `STATE_DIRECTORY/candidate/`. The HTML records those exact candidate source paths and statuses; generation grants no acceptance. Without this flag the current source set is exported. Point `STATE_DIRECTORY` directly at a standalone final/candidate document directory when that is the complete delivered result. Never substitute older current documents for the version actually delivered.

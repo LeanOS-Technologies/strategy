@@ -94,6 +94,9 @@ Every operation returns Candidate, NeedData, Conflict or Failure, each a defined
 | [`../.group/contracts/price-book.md`](../.group/contracts/price-book.md) | Contract of the owned type | `.claude/skills/set-prices/SKILL.md` |
 | [`../.group/tools/check.py`](../.group/tools/check.py) | Document check; enforces consistency between price rules, offers and the revenue model (PRICED, UNIT), references, attribution quotes and arithmetic | All three skills |
 | [`../.group/tools/strategy_docs.py`](../.group/tools/strategy_docs.py) | Document and contract parser used by `check.py` | All three skills, through `check.py` |
+| [../.group/result-reader.md](../.group/result-reader.md) | Final derived human result contract | All delivery paths |
+| [../.group/tools/](../.group/tools/) | Product-local reader code, templates, assets and licences; package this complete bundle | Final delivery |
+
 
 Export bundles every path listed here.
 
@@ -137,7 +140,7 @@ Requests arrive as text, with any files they name. The rows below are what readi
 | `request` | The decision to make: exchange, offers, prices, rules, or an evaluation | always | maps to one or more operations | route by AGENTS |
 | `targets` | Target or candidate segment records | design-revenue-model, design-offers | IDs resolve in the working view | current `target-segments`, else candidate `segments` |
 | `offers` | Offer records to price | set-prices | IDs resolve | every offer in `offer-catalogue` |
-| `owner_material` | Owner files and request attachments | when quoted | quotes appear in them | `requests/{id}/` and documents named in the request |
+| `owner_material` | Owner files and request attachments | when quoted | quotes appear in them | `.requests/{id}/` and documents named in the request |
 | `authority` | Pricing and concession bounds | when rules are written | from `autonomy-policy`, `decision-rights` | `owner` |
 | `mode` | Create or update | update only with a declared owned target | target authority and scope | create |
 

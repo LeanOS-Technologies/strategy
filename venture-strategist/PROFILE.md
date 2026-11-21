@@ -44,7 +44,7 @@ The worker's domain algebra. Invariants and laws are in [INVARIANTS.md](INVARIAN
 | Observation | Evidence `readout`, `experiment-result`; Finance `financial-report`; other inspected sources | Carries its source record | Read-only; never produced by this worker |
 | Venture-definition | Worker-owned; one operative account per venture | Contract [venture-definition](../.group/contracts/venture-definition.md); parts marked available, accepted direction, proposed, future or excluded | References detailed decisions, never copies them; candidate → current on owner acceptance |
 | Objective `OBJ-n` | Worker-owned | Outcome + metric or observation + baseline (value or `unknown`) + target with status owner-set, proposed or accepted + horizon + basis | Precedence among objectives through trade-offs |
-| Bet `BET-n` | Worker-owned | Objective reference + intervention + hypothesised response + mechanism + hardest assumption + continue/change/stop conditions | Disposition proposed, active, held, scaling, closing |
+| Bet `BET-n` | Worker-owned | Objective reference + intervention + hypothesised response + mechanism + hardest assumption + continue, increase, change, hold and close conditions | Disposition proposed, active, held, scaling, closing |
 | Action `ACT-n` | Worker-owned, in the focus-plan | Bet reference + output + executor + timing + prerequisite | Timing now, parallel, after, deferred; ready when prerequisites hold |
 | Enabling action `ENB-n` | Worker-owned, in the focus-plan | Blocked actions + missing condition + enabling step or alternative + owner + continuing work | Resolves a prerequisite; a purchase is named for Finance, never priced here |
 | Review disposition | Worker-owned, in a strategy-review | Expected vs observed + execution and exposure + disposition + reason | continue, increase, change, hold, close |
@@ -108,13 +108,16 @@ define-venture runs first and again at reconciliation; set-objectives consumes i
 | [`../.group/contracts/`](../.group/contracts/) (members' types) | Meaning of the commercial documents read | `define-venture`, `prioritize-bets`, `review-strategy` |
 | [`../.group/tools/check.py`](../.group/tools/check.py) | Document and must-agree check | All five skills |
 | [`../.group/tools/strategy_docs.py`](../.group/tools/strategy_docs.py) | Document parser used by `tools/focus.py` | `set-focus`, `review-strategy` |
+| [../.group/result-reader.md](../.group/result-reader.md) | Final derived human result contract | All delivery paths |
+| [../.group/tools/](../.group/tools/) | Product-local reader code, templates, assets and licences; package this complete bundle | Final delivery |
+
 
 Export bundles every path listed here.
 
 ## Authority
 
 - **Owned objects:** venture-definition, objectives, bet-portfolio, focus-plan, strategy-review for each venture.
-- **Write scopes:** `venture/{v}/strategy/candidate/{venture.md, objectives.md, bet-portfolio.md, focus-plan.md, strategy-review/{period}.md}`, the request's `requests/{id}/work-result.md`; scratch.
+- **Write scopes:** `venture/{v}/strategy/candidate/{venture.md, objectives.md, bet-portfolio.md, focus-plan.md, strategy-review/{period}.md}`, the request's `.requests/{id}/request.md`; scratch.
 - **External effects:** none. The worker prepares and recommends; the owner accepts.
 - **Bounds:** the owner's explicit scope, order and format instructions; one open candidate per instance.
 
@@ -148,7 +151,7 @@ Requests arrive as text, with any files they name. The rows below are what readi
 | --- | --- | --- | --- | --- |
 | `venture` | The venture id | always | `venture/{v}/` exists, or is created for a new venture | the single venture the request names |
 | `request` | Text: define, set objectives, prioritize, focus, review, evaluate | always | maps to a routing row | evaluate when only a question is asked |
-| `owner_material` | Files or text the owner supplied | define-venture; any owner attribution | readable; recorded in *Built from* | `requests/{id}/request.md` and `attachments/` |
+| `owner_material` | Files or text the owner supplied | define-venture; any owner attribution | readable; recorded in *Built from* | `.requests/{id}/request.md` and `.requests/{id}/material/` |
 | `strategy_state` | Current Strategy documents and open candidates | always | working view; revisions recorded | `venture/{v}/strategy/` |
 | `governance` | `mandate`, `decision-rights`, `autonomy-policy` | when they exist | current revision | owner material stands for owner intent; decision rights default to owner acceptance |
 | `observations` | `readout`, `experiment-result`, `financial-report`, other inspected sources | review-strategy | carries its source | none |

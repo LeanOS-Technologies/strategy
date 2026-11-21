@@ -1,0 +1,47 @@
+/* Tool mechanics use the same packaged typography, colours, surfaces and controls as results. */
+.tool-content {margin-top:24px;overflow-wrap:anywhere;}
+.tool-content>h2 {margin-top:40px;padding-top:24px;border-top:1px solid var(--line);}
+.tool-content h2 {font-size:23px;line-height:1.3;}
+.tool-content h3 {font-size:18px;line-height:1.4;}
+.tool-content p {max-width:65ch;}
+.tool-content .grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px;}
+.tool-content .card,.tool-content>details {background:var(--raised);border:1px solid var(--line);border-radius:14px;padding:24px;min-width:0;}
+.tool-content .card h2,.tool-content .card h3 {margin-top:0;}
+.tool-content details {margin-block:12px;min-width:0;}
+.tool-content summary {padding:12px 0;}
+.tool-content .muted,.tool-content .small {color:var(--text-muted);font-size:14px;}
+.tool-content .chip,.tool-content .tag {display:inline-block;background:var(--sunken);padding:4px 8px;border-radius:8px;font:12px/1.6 var(--font-label);color:var(--text-secondary);margin:3px 6px 3px 0;}
+.tool-content .wrap {max-width:100%;overflow:auto;border:1px solid var(--line);border-radius:12px;margin-block:16px;}
+.tool-content table {width:100%;border-collapse:collapse;font-size:14px;}
+.tool-content th,.tool-content td {text-align:left;vertical-align:top;padding:12px;border-bottom:1px solid var(--line);}
+.tool-content th {background:var(--surface);font-weight:600;}
+.tool-content td {background:var(--raised);overflow-wrap:anywhere;min-width:120px;max-width:40ch;}
+.tool-content tr:last-child td {border-bottom:0;}
+.tool-content code {font-family:var(--font-exact);font-size:.875em;}
+.tool-content .bar {display:flex;flex-wrap:wrap;gap:12px;margin-block:16px;}
+.tool-content .bar button {border:1px solid var(--line);border-radius:99px;background:var(--raised);color:var(--text);padding:8px 16px;}
+.tool-content .bar [aria-pressed="true"] {border-color:var(--accent-text);}
+.tool-content .layouts {display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px;}
+.tool-content .layout {min-width:0;margin:0;}
+.tool-content .layout h4 {display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.tool-content .why2 {font-size:14px;line-height:1.55;}
+.tool-content li {margin-bottom:8px;}
+.tool-content a {text-underline-offset:3px;}
+.tool-content .catalog-row {border:1px solid var(--line);border-radius:14px;background:var(--raised);padding:20px;margin-block:12px;}
+.tool-content .catalog-row dl {display:grid;grid-template-columns:minmax(100px,1fr) minmax(0,3fr);gap:8px 16px;}
+.tool-content .catalog-row dt {font-weight:600;color:var(--text-muted);font-size:13px;}
+.tool-content .catalog-row dd {margin:0;white-space:pre-wrap;max-width:65ch;}
+.tool-content [id] {scroll-margin-top:24px;}
+.tool-nav a {padding:8px 12px;min-height:44px;display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:99px;background:var(--raised);text-decoration:none;}
+.tool-nav {gap:8px;}
+@media(max-width:540px) {.tool-content .card,.tool-content>details {padding:20px;}.tool-content .catalog-row dl {grid-template-columns:minmax(0,1fr);gap:4px;}.tool-content .catalog-row dd {margin-bottom:12px;}}
+
+.theme-control {border:0;background:transparent;color:var(--text-muted);padding:8px;}
+.toolbar {display:flex;gap:12px;align-items:end;flex-wrap:wrap;margin-block:24px;}.toolbar label {flex:1;min-width:min(100%,180px);}
+.chapter-nav {display:flex;flex-wrap:wrap;gap:8px;margin:24px 0;}
+
+/* The same filename treatment across every tool guide. */
+.tool-content .member-outputs h4 {font:600 13px/1.5 var(--font-structure);color:var(--text-secondary);margin:16px 0 8px;}
+.tool-content .file-list {list-style:none;margin:0 0 24px;padding:0;display:grid;gap:4px;}
+.tool-content .file-list li {margin:0;min-width:0;}
+.tool-content .file-name {font:13px/1.6 var(--font-exact);color:var(--text-secondary);background:none;padding:0;overflow-wrap:anywhere;}

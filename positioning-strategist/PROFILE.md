@@ -91,6 +91,9 @@ Define differentiation and choose frame are separate operations because the firs
 | [`../.group/contracts/category-definition.md`](../.group/contracts/category-definition.md) | Owned contract | `.claude/skills/design-category/SKILL.md` |
 | [`../.group/tools/check.py`](../.group/tools/check.py) | Document and must-agree check | all three skills |
 | [`../.group/tools/strategy_docs.py`](../.group/tools/strategy_docs.py) | Document parser used by `tools/positioning.py` | `tools/positioning.py` |
+| [../.group/result-reader.md](../.group/result-reader.md) | Final derived human result contract | All delivery paths |
+| [../.group/tools/](../.group/tools/) | Product-local reader code, templates, assets and licences; package this complete bundle | Final delivery |
+
 
 Export bundles every path listed here.
 

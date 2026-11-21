@@ -1,0 +1,354 @@
+/* Bundled reader design tokens; no external source-file dependency.
+   Load before the packaged reader styles.
+   One switch on <html>: data-theme="light" or "dark" overrides the visitor's device. */
+
+/* Faces, each with a metric-matched local fallback so text holds its place while the face loads */
+@font-face { font-family: "Doto"; src: url("fonts/doto-venture.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Doto Fallback"; src: local("Courier New Bold"), local("Liberation Mono Bold"); font-weight: 100 900; size-adjust: 99.98%; ascent-override: 95.02%; descent-override: 25.0%; line-gap-override: 0%; }
+@font-face { font-family: "Inter"; src: url("fonts/inter-venture.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("fonts/inter-venture-italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
+@font-face { font-family: "Inter Fallback"; src: local("Arial"), local("Liberation Sans"); font-weight: 100 549; size-adjust: 106.87%; ascent-override: 90.65%; descent-override: 22.57%; line-gap-override: 0%; }
+@font-face { font-family: "Inter Fallback"; src: local("Arial Bold"), local("Liberation Sans Bold"); font-weight: 550 900; size-adjust: 101.38%; ascent-override: 95.55%; descent-override: 23.79%; line-gap-override: 0%; }
+@font-face { font-family: "Space Mono"; src: url("fonts/space-mono-venture-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Space Mono"; src: url("fonts/space-mono-venture-700.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Space Mono Fallback"; src: local("Courier New"), local("Liberation Mono"); font-weight: 400; size-adjust: 101.98%; ascent-override: 109.82%; descent-override: 35.4%; line-gap-override: 0%; }
+@font-face { font-family: "Space Mono Fallback"; src: local("Courier New Bold"), local("Liberation Mono Bold"); font-weight: 700; size-adjust: 101.98%; ascent-override: 109.82%; descent-override: 35.4%; line-gap-override: 0%; }
+@font-face { font-family: "JetBrains Mono"; src: url("fonts/jetbrains-mono-venture.woff2") format("woff2"); font-weight: 100 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "JetBrains Mono Fallback"; src: local("Courier New"), local("Liberation Mono"); font-weight: 100 800; size-adjust: 99.98%; ascent-override: 102.02%; descent-override: 30.0%; line-gap-override: 0%; }
+
+:root {
+  /* Marks: the same in both modes */
+  --lean-red: oklch(0.5610 0.2102 31.04); /* #d4260e */
+  --lean-ink: oklch(0.1996 0.0117 27.64); /* #1b1413 */
+  --lean-white: oklch(1 0 0);
+
+  /* Faces */
+  --font-display: "Doto", "Doto Fallback", monospace;
+  --font-structure: "Inter", "Inter Fallback", sans-serif;
+  --font-label: "Space Mono", "Space Mono Fallback", monospace;
+  --font-exact: "JetBrains Mono", "JetBrains Mono Fallback", monospace;
+  --weight-display: 900;
+  --weight-strong: 600;
+  --tracking-display: -0.01em;
+  --tracking-heading: -0.015em;
+  --tracking-label: 0.08em;
+
+  /* Type: s(n) = 16 x 1.125^n, rounded to whole px; mobile sizes to 360 px, web sizes from 480 px */
+  --size-display: clamp(2.5rem, calc(0.25rem + 10vw), 3.25rem); /* step 10: 40 to 52 px */
+  --size-title: clamp(1.75rem, calc(1rem + 3.333vw), 2rem); /* step 6: 28 to 32 px */
+  --size-quote: clamp(1.375rem, calc(0.625rem + 3.333vw), 1.625rem); /* step 4: 22 to 26 px */
+  --size-heading: clamp(1.25rem, calc(0.6875rem + 2.5vw), 1.4375rem); /* step 3: 20 to 23 px */
+  --size-lead: clamp(1.125rem, calc(0.75rem + 1.667vw), 1.25rem); /* step 2: 18 to 20 px */
+  --size-body: 1rem; /* step 0: 16 to 16 px */
+  --size-small: clamp(0.875rem, calc(0.6875rem + 0.8333vw), 0.9375rem); /* step -0.5: 14 to 15 px */
+  --size-code: clamp(0.875rem, calc(0.6875rem + 0.8333vw), 0.9375rem); /* step -0.5: 14 to 15 px */
+  --size-meta: clamp(0.8125rem, calc(0.625rem + 0.8333vw), 0.875rem); /* step -1: 13 to 14 px */
+  --size-label: clamp(0.75rem, calc(0.5625rem + 0.8333vw), 0.8125rem); /* step -2: 12 to 13 px */
+  --size-tag: 0.6875rem; /* step -3: 11 px, one below the label, for badges */
+  --leading-display: 1.05;
+  --leading-title: 1.2;
+  --leading-quote: 1.35;
+  --leading-heading: 1.3;
+  --leading-lead: 1.45;
+  --leading-body: 1.55;
+  --leading-small: 1.5;
+  --leading-meta: 1.45;
+  --leading-label: 1.6;
+  --leading-single: 1.2;
+
+  /* Measure: the body holds 60 to 72 characters a line; each step divides by the square root of 2 */
+  --measure-body: calc(32 * var(--size-body));
+  --measure-1: calc(22.5 * var(--size-body));
+  --measure-2: calc(16 * var(--size-body));
+  --measure-3: calc(11.25 * var(--size-body));
+  --measure-4: calc(8 * var(--size-body));
+
+  /* Space: one unit of 4 px; the scale is 1, 2, 3, 4, 6, 8, 12, 16 and 24 units */
+  --u: 4px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  /* Space roles: each grouping level is at least one step larger than the level inside it */
+  --space-inline: 0.5rem;
+  --space-tight: 0.5rem;
+  --space-inset: 1rem;
+  --space-paragraph: 1rem;
+  --space-gutter: clamp(1rem, calc(0.2925rem + 1.887vw), 1.5rem);
+  --space-group: clamp(2rem, calc(0.5849rem + 3.774vw), 3rem);
+  --space-section: clamp(4rem, calc(1.17rem + 7.547vw), 6rem);
+  --space-section-block: var(--space-section);
+  --page-margin: clamp(1.25rem, calc(0.1887rem + 2.83vw), 2rem);
+  --page-width: 1200px;
+  --article-width: 792px;
+
+  /* Lines, seen at 1:1 */
+  --line: 1px;
+  --line-connector: 1.5px;
+  --line-strong: 2px;
+  --line-foundation: 3px;
+
+  /* Shape: rounded modules, menus and controls; buttons, chips and status are pills; dots are round */
+  --radius-surface: 14px;
+  --radius-menu: 12px;
+  --radius-control: 10px;
+  --radius-pill: 999px;
+  --radius-tag: var(--radius-pill);
+  --radius-copy: var(--radius-pill);
+  --radius-mark: 3px;
+  --radius-round: 50%;
+
+  /* The dot field under the page: decorative, never carries meaning */
+  --field-pitch: 14px;
+  --field-dot: 1px;
+
+  /* Controls: anything pressed never falls below the target floor */
+  --target-floor: 0px;
+  --control-height: max(var(--target-floor), 48px);
+  --control-height-small: max(var(--target-floor), 36px);
+  --copy-height: max(var(--target-floor), 28px);
+  --tag-height: 24px;
+  --header-height: 64px;
+  --bar-height: 40px;
+  --title-bar-height: 32px;
+  --logo-height: 32px;
+  --icon: 16px;
+  --thumb: 18px;
+  --check: calc(1.2 * var(--size-small));
+  --control-inset: var(--space-3);
+  --control-mark: var(--icon);
+  --signal-size: 8px;
+  --rows-visible: 8.5;
+
+  /* Motion: a state confirms at once, an arrival settles, a departure accelerates */
+  --ease-state: cubic-bezier(0.2, 0.9, 0.1, 1);
+  --ease-enter: cubic-bezier(0.25, 0.5, 0.5, 0.9);
+  --ease-exit: cubic-bezier(0.5, 0.05, 0.75, 0.2);
+  --motion-fast: 120ms;
+  --motion-regular: 180ms;
+
+  /* Layers */
+  --layer-sticky: 20;
+  --layer-popover: 30;
+  --layer-toast: 60;
+}
+
+@media (pointer: coarse) { :root { --target-floor: 44px; } }
+
+/* Colour: two modes, each role taken as recorded in the brand palette */
+:root, [data-theme="light"] {
+  color-scheme: light;
+  --canvas: oklch(0.9255 0.0056 31.05); /* #eae5e4 The page, under the dot field */
+  --surface: oklch(0.9519 0.0045 34.31); /* #f2eeed A quiet panel */
+  --raised: oklch(0.9722 0.0035 39.48); /* #f8f5f4 Modules, inputs, overlays */
+  --sunken: oklch(0.8989 0.0067 28.84); /* #e2dcdb Wells, tints and disabled controls */
+  --text: oklch(0.1996 0.0117 27.64); /* #1b1413 Headings and points */
+  --text-secondary: oklch(0.3554 0.0142 10.99); /* #43393a Running text */
+  --text-muted: oklch(0.4677 0.0145 11.41); /* #625758 Labels, sources, dates */
+  --line-subtle: oklch(0.8746 0.0059 30.65); /* #d9d4d3 Dividers with no meaning */
+  --line-regular: oklch(0.8359 0.0061 30.35); /* #cdc8c7 Module and chip edges */
+  --line-strong-colour: oklch(0.6000 0.0120 30.00); /* #877e7c Input outlines and meaningful boundaries */
+  --accent: oklch(0.5610 0.2102 31.04); /* #d4260e Main action fill: bull red */
+  --accent-hover: oklch(0.4998 0.1992 30.21); /* #ba0f00 Main action, hovered and pressed */
+  --on-accent: oklch(1.0000 0.0000 0.00); /* #ffffff Words on the main action */
+  --accent-text: oklch(0.4993 0.1940 29.55); /* #b8160c Links, text actions and the focus ring */
+  --signal: oklch(0.6152 0.2256 27.04); /* #ee2e2e The signal light, foundation line and current item */
+  --declared: oklch(0.4798 0.1850 26.92); /* #ae1419 Declared-register labels */
+  --judgment: oklch(0.4207 0.1189 254.61); /* #154d8c The reader's judgment: words */
+  --judgment-fill: oklch(0.4207 0.1189 254.61); /* #154d8c The reader's judgment: rules, markers, the highlighted value */
+  --ink: oklch(0.1996 0.0117 27.64); /* #1b1413 Exact material: the terminal */
+  --ink-text: oklch(0.9557 0.0056 31.05); /* #f4efee Words on ink */
+  --ink-muted: oklch(0.7000 0.0100 30.00); /* #a59c9b Prompts and output on ink */
+  --pass: oklch(0.4400 0.1100 150.00); /* #15632f Pass: word and mark */
+  --fail: oklch(0.3995 0.1497 27.11); /* #861213 Fail: word and mark */
+  --review: oklch(0.4207 0.1189 254.61); /* #154d8c Review: word and mark */
+  --pending: oklch(0.4677 0.0145 11.41); /* #625758 Pending: word and mark */
+  --data-1: oklch(0.5610 0.2102 31.04); /* #d4260e Chart mark 1 */
+  --data-2: oklch(0.4000 0.1400 256.00); /* #004591 Chart mark 2 */
+  --data-3: oklch(0.6200 0.1400 285.00); /* #7f78d6 Chart mark 3 */
+  --data-4: oklch(0.3400 0.1400 16.00); /* #6e001e Chart mark 4 */
+  --data-other: oklch(0.5600 0.0120 30.00); /* #7b7270 Chart mark, the rest */
+  /* Derived roles */
+  --focus: var(--accent-text);
+  --link: var(--accent-text);
+  --link-hover: var(--text);
+  --fill-header: oklch(from var(--canvas) l c h / 0.9);
+  --fill-raised: var(--raised);
+  --fill-surface: var(--surface);
+  --fill-tint: var(--sunken);
+  --fill-track: var(--line-regular);
+  --fill-selected: var(--sunken);
+  --fill-invert: var(--text);
+  --fill-hover: oklch(from var(--text) l c h / 0.05);
+  --scrim: oklch(from var(--lean-ink) l c h / 0.42);
+  --field-colour: oklch(from var(--text) l c h / 0.12);
+  --edge-light: inset 0 1px 0 oklch(1 0 0 / 0.9);
+  --lift-1: 0 1px 2px oklch(from var(--lean-ink) l c h / 0.08);
+  --lift-2: 0 2px 4px oklch(from var(--lean-ink) l c h / 0.06), 0 12px 24px -12px oklch(from var(--lean-ink) l c h / 0.18);
+  --well: inset 0 1px 2px oklch(from var(--lean-ink) l c h / 0.06);
+  --overlay-shadow: 0 2px 6px oklch(from var(--lean-ink) l c h / 0.08), 0 16px 36px -8px oklch(from var(--lean-ink) l c h / 0.22);
+  --signal-glow: 0 0 8px var(--signal);
+  --terminal-command: var(--ink-text);
+  --terminal-value: oklch(0.7600 0.1000 254.00);
+  --terminal-prompt: oklch(0.6995 0.1798 27.03);
+  --terminal-line: oklch(1 0 0 / 0.12);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --canvas: oklch(0.1650 0.0080 30.00); /* #120d0c The page, under the dot field */
+  --surface: oklch(0.2000 0.0090 30.00); /* #1a1514 A quiet panel */
+  --raised: oklch(0.2350 0.0100 30.00); /* #231c1b Modules, inputs, overlays */
+  --sunken: oklch(0.1400 0.0070 30.00); /* #0c0808 Wells, tints and disabled controls */
+  --text: oklch(0.9557 0.0056 31.05); /* #f4efee Headings and points */
+  --text-secondary: oklch(0.8200 0.0120 30.00); /* #ccc1bf Running text */
+  --text-muted: oklch(0.7100 0.0120 30.00); /* #a99f9d Labels, sources, dates */
+  --line-subtle: oklch(0.2700 0.0100 30.00); /* #2b2524 Dividers with no meaning */
+  --line-regular: oklch(0.3300 0.0110 30.00); /* #3b3332 Module and chip edges */
+  --line-strong-colour: oklch(0.5600 0.0120 30.00); /* #7b7270 Input outlines and meaningful boundaries */
+  --accent: oklch(0.5610 0.2102 31.04); /* #d4260e Main action fill: bull red */
+  --accent-hover: oklch(0.5850 0.2050 31.00); /* #db351f Main action, hovered and pressed */
+  --on-accent: oklch(1.0000 0.0000 0.00); /* #ffffff Words on the main action */
+  --accent-text: oklch(0.7971 0.1164 27.02); /* #ff9f94 Links, text actions and the focus ring */
+  --signal: oklch(0.6152 0.2256 27.04); /* #ee2e2e The signal light, foundation line and current item */
+  --declared: oklch(0.6995 0.1798 27.03); /* #fa695e Declared-register labels */
+  --judgment: oklch(0.7600 0.1000 254.00); /* #84b4f0 The reader's judgment: words */
+  --judgment-fill: oklch(0.7600 0.1000 254.00); /* #84b4f0 The reader's judgment: rules, markers, the highlighted value */
+  --ink: oklch(0.1200 0.0060 30.00); /* #080505 Exact material: the terminal */
+  --ink-text: oklch(0.9300 0.0050 30.00); /* #ebe7e6 Words on ink */
+  --ink-muted: oklch(0.6800 0.0100 30.00); /* #9e9695 Prompts and output on ink */
+  --pass: oklch(0.8200 0.1300 155.00); /* #79dd9f Pass: word and mark */
+  --fail: oklch(0.7100 0.1600 22.00); /* #f57373 Fail: word and mark */
+  --review: oklch(0.7600 0.1000 254.00); /* #84b4f0 Review: word and mark */
+  --pending: oklch(0.7100 0.0120 30.00); /* #a99f9d Pending: word and mark */
+  --data-1: oklch(0.6600 0.1900 29.00); /* #f05848 Chart mark 1 */
+  --data-2: oklch(0.5400 0.1300 260.00); /* #3f6db9 Chart mark 2 */
+  --data-3: oklch(0.7400 0.1300 290.00); /* #aa9cf7 Chart mark 3 */
+  --data-4: oklch(0.8900 0.0600 7.46); /* #ffcbd3 Chart mark 4 */
+  --data-other: oklch(0.6200 0.0120 30.00); /* #8d8482 Chart mark, the rest */
+  /* Derived roles */
+  --focus: var(--accent-text);
+  --link: var(--accent-text);
+  --link-hover: var(--text);
+  --fill-header: oklch(from var(--canvas) l c h / 0.9);
+  --fill-raised: var(--raised);
+  --fill-surface: var(--surface);
+  --fill-tint: var(--sunken);
+  --fill-track: var(--line-regular);
+  --fill-selected: var(--sunken);
+  --fill-invert: var(--text);
+  --fill-hover: oklch(from var(--text) l c h / 0.07);
+  --scrim: oklch(from var(--lean-ink) l c h / 0.62);
+  --field-colour: oklch(from var(--text) l c h / 0.08);
+  --edge-light: inset 0 1px 0 oklch(1 0 0 / 0.05);
+  --lift-1: 0 1px 2px oklch(from var(--lean-ink) l c h / 0.4);
+  --lift-2: 0 2px 4px oklch(from var(--lean-ink) l c h / 0.45), 0 12px 24px -12px oklch(from var(--lean-ink) l c h / 0.7);
+  --well: inset 0 1px 2px oklch(from var(--lean-ink) l c h / 0.4);
+  --overlay-shadow: 0 2px 6px oklch(from var(--lean-ink) l c h / 0.4), 0 16px 36px -8px oklch(from var(--lean-ink) l c h / 0.75);
+  --signal-glow: 0 0 8px var(--signal);
+  --terminal-command: var(--ink-text);
+  --terminal-value: oklch(0.7600 0.1000 254.00);
+  --terminal-prompt: oklch(0.6995 0.1798 27.03);
+  --terminal-line: oklch(1 0 0 / 0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --canvas: oklch(0.1650 0.0080 30.00); /* #120d0c The page, under the dot field */
+    --surface: oklch(0.2000 0.0090 30.00); /* #1a1514 A quiet panel */
+    --raised: oklch(0.2350 0.0100 30.00); /* #231c1b Modules, inputs, overlays */
+    --sunken: oklch(0.1400 0.0070 30.00); /* #0c0808 Wells, tints and disabled controls */
+    --text: oklch(0.9557 0.0056 31.05); /* #f4efee Headings and points */
+    --text-secondary: oklch(0.8200 0.0120 30.00); /* #ccc1bf Running text */
+    --text-muted: oklch(0.7100 0.0120 30.00); /* #a99f9d Labels, sources, dates */
+    --line-subtle: oklch(0.2700 0.0100 30.00); /* #2b2524 Dividers with no meaning */
+    --line-regular: oklch(0.3300 0.0110 30.00); /* #3b3332 Module and chip edges */
+    --line-strong-colour: oklch(0.5600 0.0120 30.00); /* #7b7270 Input outlines and meaningful boundaries */
+    --accent: oklch(0.5610 0.2102 31.04); /* #d4260e Main action fill: bull red */
+    --accent-hover: oklch(0.5850 0.2050 31.00); /* #db351f Main action, hovered and pressed */
+    --on-accent: oklch(1.0000 0.0000 0.00); /* #ffffff Words on the main action */
+    --accent-text: oklch(0.7971 0.1164 27.02); /* #ff9f94 Links, text actions and the focus ring */
+    --signal: oklch(0.6152 0.2256 27.04); /* #ee2e2e The signal light, foundation line and current item */
+    --declared: oklch(0.6995 0.1798 27.03); /* #fa695e Declared-register labels */
+    --judgment: oklch(0.7600 0.1000 254.00); /* #84b4f0 The reader's judgment: words */
+    --judgment-fill: oklch(0.7600 0.1000 254.00); /* #84b4f0 The reader's judgment: rules, markers, the highlighted value */
+    --ink: oklch(0.1200 0.0060 30.00); /* #080505 Exact material: the terminal */
+    --ink-text: oklch(0.9300 0.0050 30.00); /* #ebe7e6 Words on ink */
+    --ink-muted: oklch(0.6800 0.0100 30.00); /* #9e9695 Prompts and output on ink */
+    --pass: oklch(0.8200 0.1300 155.00); /* #79dd9f Pass: word and mark */
+    --fail: oklch(0.7100 0.1600 22.00); /* #f57373 Fail: word and mark */
+    --review: oklch(0.7600 0.1000 254.00); /* #84b4f0 Review: word and mark */
+    --pending: oklch(0.7100 0.0120 30.00); /* #a99f9d Pending: word and mark */
+    --data-1: oklch(0.6600 0.1900 29.00); /* #f05848 Chart mark 1 */
+    --data-2: oklch(0.5400 0.1300 260.00); /* #3f6db9 Chart mark 2 */
+    --data-3: oklch(0.7400 0.1300 290.00); /* #aa9cf7 Chart mark 3 */
+    --data-4: oklch(0.8900 0.0600 7.46); /* #ffcbd3 Chart mark 4 */
+    --data-other: oklch(0.6200 0.0120 30.00); /* #8d8482 Chart mark, the rest */
+    /* Derived roles */
+    --focus: var(--accent-text);
+    --link: var(--accent-text);
+    --link-hover: var(--text);
+    --fill-header: oklch(from var(--canvas) l c h / 0.9);
+    --fill-raised: var(--raised);
+    --fill-surface: var(--surface);
+    --fill-tint: var(--sunken);
+    --fill-track: var(--line-regular);
+    --fill-selected: var(--sunken);
+    --fill-invert: var(--text);
+    --fill-hover: oklch(from var(--text) l c h / 0.07);
+    --scrim: oklch(from var(--lean-ink) l c h / 0.62);
+    --field-colour: oklch(from var(--text) l c h / 0.08);
+    --edge-light: inset 0 1px 0 oklch(1 0 0 / 0.05);
+    --lift-1: 0 1px 2px oklch(from var(--lean-ink) l c h / 0.4);
+    --lift-2: 0 2px 4px oklch(from var(--lean-ink) l c h / 0.45), 0 12px 24px -12px oklch(from var(--lean-ink) l c h / 0.7);
+    --well: inset 0 1px 2px oklch(from var(--lean-ink) l c h / 0.4);
+    --overlay-shadow: 0 2px 6px oklch(from var(--lean-ink) l c h / 0.4), 0 16px 36px -8px oklch(from var(--lean-ink) l c h / 0.75);
+    --signal-glow: 0 0 8px var(--signal);
+    --terminal-command: var(--ink-text);
+    --terminal-value: oklch(0.7600 0.1000 254.00);
+    --terminal-prompt: oklch(0.6995 0.1798 27.03);
+    --terminal-line: oklch(1 0 0 / 0.12);
+  }
+}
+
+/* Exact material: the editor in both grounds, its code colours from the palette's data and status roles */
+.editor--dark {
+  --editor-ground: var(--ink);
+  --editor-side: oklch(from var(--ink) calc(l - 0.035) c h);
+  --editor-line: oklch(from var(--ink) calc(l + 0.09) c h);
+  --editor-text: oklch(0.9557 0.0056 31.05);
+  --editor-muted: oklch(0.7100 0.0120 30.00);
+  --editor-gutter: oklch(0.7100 0.0120 30.00);
+  --editor-current: oklch(from var(--lean-red) l c h / 0.08);
+  --editor-select: oklch(from var(--lean-red) l c h / 0.18);
+  --code-keyword: oklch(0.7971 0.1164 27.02);
+  --code-string: oklch(0.8200 0.1300 155.00);
+  --code-number: oklch(0.7600 0.1000 254.00);
+  --code-property: oklch(0.7400 0.1300 290.00);
+  --code-function: oklch(0.8900 0.0600 7.46);
+  --code-comment: var(--editor-muted);
+}
+
+.editor--light {
+  --editor-ground: oklch(0.9722 0.0035 39.48);
+  --editor-side: oklch(0.9519 0.0045 34.31);
+  --editor-line: oklch(0.8359 0.0061 30.35);
+  --editor-text: oklch(0.1996 0.0117 27.64);
+  --editor-muted: oklch(0.4677 0.0145 11.41);
+  --editor-gutter: oklch(0.4677 0.0145 11.41);
+  --editor-current: oklch(from var(--lean-red) l c h / 0.08);
+  --editor-select: oklch(from var(--lean-red) l c h / 0.18);
+  --code-keyword: oklch(0.4993 0.1940 29.55);
+  --code-string: oklch(0.4400 0.1100 150.00);
+  --code-number: oklch(0.4207 0.1189 254.61);
+  --code-property: oklch(0.4000 0.1400 256.00);
+  --code-function: oklch(0.6200 0.1400 285.00);
+  --code-comment: var(--editor-muted);
+}
+

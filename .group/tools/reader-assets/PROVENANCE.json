@@ -1,0 +1,17 @@
+{
+  "source": "Bundled reader design assets, 2026-11-09; packaged copy, no external source dependency",
+  "files": {
+    "tokens.css": "ca65eaddd52b3030324af82feeddd8c5a2ff33fa936d90ffb76f6608a8afb14d",
+    "fonts/LICENSE-Doto.txt": "26a7b58bdba6cda8a78ca6e8b3791d8013b8abc6d5e6519f84193893aee02020",
+    "fonts/space-mono-venture-400.woff2": "895862e01428f8d94b90256a0c88465cb56bed0e77652e8025b6710e54f52a5f",
+    "fonts/LICENSE-JetBrainsMono.txt": "30f0c136e3c88e422d0791acd97238870f9054a9729bc34cf2ff0d4ed8cac4ad",
+    "fonts/LICENSE-Inter.txt": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+    "fonts/inter-venture.woff2": "76a90672e46b64995dea35d177314d4dc615546a4b27600c94da289b9539d988",
+    "fonts/space-mono-venture-700.woff2": "c745bf4b53da64d900ae49c0da948e689688f96ac2b6a3934d0042b272a05c7f",
+    "fonts/doto-venture.woff2": "4b0c0be42b6c7a47299bf83b39507b920755b9de06cf0a8a02044d29d889cef9",
+    "fonts/inter-venture-italic.woff2": "b53d660af1fd62e7ba7204debff48bc990cb68f1737161fd180c8ae35f0edfa1",
+    "fonts/LICENSE-SpaceMono.txt": "8e4ee42b2553e1e01504e61cb0d46d148cd8c9e5eacaa3622a7df2d4f2955b9f",
+    "fonts/jetbrains-mono-venture.woff2": "0dfeee90a8713b3db89d1a7f70a30d15a0440d18b6395fb1c2f864b4f0353137"
+  },
+  "licences": "Font licences bundled in fonts/LICENSE-*.txt; design tokens follow the product source licence."
+}

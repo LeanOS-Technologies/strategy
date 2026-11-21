@@ -4,7 +4,7 @@ Shared rules: [document-rules.md](document-rules.md).
 
 ## Meaning
 
-The bets the venture runs to reach its objectives. A bet is an intervention with a proposed outcome mechanism (customer or operating condition → intervention → hypothesised response → objective contribution) that establishes, exploits or improves part of the commercial configuration. The portfolio states the chosen concentration, how bets reinforce or compete, the strongest forgone alternative, each bet's next commitment and the conditions for continuing, expanding, changing or stopping it. Operational tasks serve bets without each becoming a bet.
+The bets the venture runs to reach its objectives. A bet is an intervention with a proposed outcome mechanism (customer or operating condition → intervention → hypothesised response → objective contribution) that establishes, exploits or improves part of the commercial configuration. The portfolio states the chosen concentration, how bets reinforce or compete, the strongest forgone alternative, each bet's next commitment and the conditions for continuing, increasing, changing, holding or closing it. Operational tasks serve bets without each becoming a bet.
 
 ## Identity and scope
 
@@ -15,7 +15,7 @@ One instance per venture, at `venture/{v}/strategy/bet-portfolio.md`. Bets carry
 - Each bet references at least one current objective and explains its contribution through a mechanism.
 - Hypothesis and basis carries each bet's hardest consequential assumption, its source or reasoning and the action that tests it; response estimates retain their premises there. An intended outcome is never restated as a prediction.
 - Each bet is compared with a relevant alternative, including continuing current work where that is the real alternative.
-- Continue, change and stop conditions have a basis and are never backfilled to make the bet pass.
+- Continue, increase, change, hold and close conditions have a basis and are never backfilled to make the bet pass.
 - Learning value is counted once, as the later decision it can change.
 - Bets are jointly compatible; their commercial references agree with the selected targets, advantage, offers and prices.
 - No bet holds an amount of money or an estimate of owner hours.
@@ -71,5 +71,5 @@ set-focus may rely on the active bets, their next commitments and their dependen
 | `Bet` | The bet | ref bet-portfolio |
 | `Hypothesis and basis` | The hardest consequential assumption and what supports it | reasoning |
 | `Observation horizon` | When the response can be read | factual |
-| `Continue, change or stop` | The conditions and their basis | reasoning |
+| `Control conditions` | The conditions for continue, increase, change, hold or close, and their basis | reasoning |
 | `Next commitment` | What the next decision commits to | reasoning |
